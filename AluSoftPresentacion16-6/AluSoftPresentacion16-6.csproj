@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D2540E6-AA73-4E7E-8BEA-4DD0164FB370}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>AluSoftPresentacion16_6</RootNamespace>
+    <AssemblyName>AluSoftPresentacion16-6</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm00_Persona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm00_Persona.Designer.cs">
+      <DependentUpon>frm00_Persona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm00_Persona_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm00_Persona_2.Designer.cs">
+      <DependentUpon>frm00_Persona_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm01_Inventario_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm01_Inventario_1.Designer.cs">
+      <DependentUpon>frm01_Inventario_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm01_Inventario_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm01_Inventario_2.Designer.cs">
+      <DependentUpon>frm01_Inventario_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm02_Stock_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm02_Stock_1.Designer.cs">
+      <DependentUpon>frm02_Stock_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm02_Stock_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm02_Stock_2.Designer.cs">
+      <DependentUpon>frm02_Stock_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm03_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm03_Cliente.Designer.cs">
+      <DependentUpon>frm03_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm03_Cliente_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm03_Cliente_2.Designer.cs">
+      <DependentUpon>frm03_Cliente_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm04_Proveedor_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm04_Proveedor_1.Designer.cs">
+      <DependentUpon>frm04_Proveedor_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm04_Proveedor_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm04_Proveedor_2.Designer.cs">
+      <DependentUpon>frm04_Proveedor_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm07_PresupuestoCliente_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm07_PresupuestoCliente_2.Designer.cs">
+      <DependentUpon>frm07_PresupuestoCliente_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm08_PedidoCliente_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm08_PedidoCliente_1.Designer.cs">
+      <DependentUpon>frm08_PedidoCliente_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm08_PedidoCliente_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm08_PedidoCliente_2.Designer.cs">
+      <DependentUpon>frm08_PedidoCliente_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm09_Factura_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm09_Factura_1.Designer.cs">
+      <DependentUpon>frm09_Factura_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm09_Factura_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm09_Factura_2.Designer.cs">
+      <DependentUpon>frm09_Factura_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm10_Cobro_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm10_Cobro_1.Designer.cs">
+      <DependentUpon>frm10_Cobro_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm10_Cobro_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm10_Cobro_2.Designer.cs">
+      <DependentUpon>frm10_Cobro_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm11_Ventas_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm11_Ventas_1.Designer.cs">
+      <DependentUpon>frm11_Ventas_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm11_Ventas_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm11_Ventas_2.Designer.cs">
+      <DependentUpon>frm11_Ventas_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm12_Catalogo_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm12_Catalogo_1.Designer.cs">
+      <DependentUpon>frm12_Catalogo_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm12_Catalogo_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm12_Catalogo_2.Designer.cs">
+      <DependentUpon>frm12_Catalogo_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm13_ListaPrecios_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm13_ListaPrecios_1.Designer.cs">
+      <DependentUpon>frm13_ListaPrecios_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm13_ListaPrecios_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm13_ListaPrecios_2.Designer.cs">
+      <DependentUpon>frm13_ListaPrecios_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm14_OrdenProduccion_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm14_OrdenProduccion_1.Designer.cs">
+      <DependentUpon>frm14_OrdenProduccion_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm14_OrdenProduccion_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm14_OrdenProduccion_2.Designer.cs">
+      <DependentUpon>frm14_OrdenProduccion_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm15_Estado_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm15_Estado_1.Designer.cs">
+      <DependentUpon>frm15_Estado_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm15_Estado_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm15_Estado_2.Designer.cs">
+      <DependentUpon>frm15_Estado_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm16_PedidoReaprovisionamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm16_PedidoReaprovisionamiento.Designer.cs">
+      <DependentUpon>frm16_PedidoReaprovisionamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm16_PedidoReaprovisionamiento_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm16_PedidoReaprovisionamiento_2.Designer.cs">
+      <DependentUpon>frm16_PedidoReaprovisionamiento_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm17_Compras_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm17_Compras_1.Designer.cs">
+      <DependentUpon>frm17_Compras_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm17_Compras_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm17_Compras_2.Designer.cs">
+      <DependentUpon>frm17_Compras_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm18_PresupuestoProveedor_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm18_PresupuestoProveedor_1.Designer.cs">
+      <DependentUpon>frm18_PresupuestoProveedor_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm18_PresupuestoProveedor_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm18_PresupuestoProveedor_2.Designer.cs">
+      <DependentUpon>frm18_PresupuestoProveedor_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm19_Maximo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm19_Maximo.Designer.cs">
+      <DependentUpon>frm19_Maximo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm19_Maximo_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm19_Maximo_2.Designer.cs">
+      <DependentUpon>frm19_Maximo_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm20_Minimo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm20_Minimo.Designer.cs">
+      <DependentUpon>frm20_Minimo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm07_PresupuestoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm07_PresupuestoCliente.Designer.cs">
+      <DependentUpon>frm07_PresupuestoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm20_Minimo_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm20_Minimo_2.Designer.cs">
+      <DependentUpon>frm20_Minimo_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm21_Produccion_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm21_Produccion_1.Designer.cs">
+      <DependentUpon>frm21_Produccion_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm21_Produccion_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm21_Produccion_2.Designer.cs">
+      <DependentUpon>frm21_Produccion_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm22_Reportes_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm22_Reportes_1.Designer.cs">
+      <DependentUpon>frm22_Reportes_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm22_Reportes_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm22_Reportes_2.Designer.cs">
+      <DependentUpon>frm22_Reportes_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm23_Remito_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm23_Remito_1.Designer.cs">
+      <DependentUpon>frm23_Remito_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm23_Remito_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm23_Remito_2.Designer.cs">
+      <DependentUpon>frm23_Remito_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm24_Pagos_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm24_Pagos_1.Designer.cs">
+      <DependentUpon>frm24_Pagos_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm24_Pagos_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm24_Pagos_2.Designer.cs">
+      <DependentUpon>frm24_Pagos_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm35_Bitacora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm35_Bitacora.Designer.cs">
+      <DependentUpon>frm35_Bitacora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Administrativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Administrativo.Designer.cs">
+      <DependentUpon>Menu_Administrativo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Gerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Gerente.Designer.cs">
+      <DependentUpon>Menu_Gerente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Soporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Soporte.Designer.cs">
+      <DependentUpon>Menu_Soporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Supervisor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Supervisor.Designer.cs">
+      <DependentUpon>Menu_Supervisor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm00_Persona.resx">
+      <DependentUpon>frm00_Persona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm00_Persona_2.resx">
+      <DependentUpon>frm00_Persona_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm01_Inventario_1.resx">
+      <DependentUpon>frm01_Inventario_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm01_Inventario_2.resx">
+      <DependentUpon>frm01_Inventario_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm02_Stock_1.resx">
+      <DependentUpon>frm02_Stock_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm02_Stock_2.resx">
+      <DependentUpon>frm02_Stock_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm03_Cliente.resx">
+      <DependentUpon>frm03_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm03_Cliente_2.resx">
+      <DependentUpon>frm03_Cliente_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm04_Proveedor_1.resx">
+      <DependentUpon>frm04_Proveedor_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm04_Proveedor_2.resx">
+      <DependentUpon>frm04_Proveedor_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm07_PresupuestoCliente_2.resx">
+      <DependentUpon>frm07_PresupuestoCliente_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm08_PedidoCliente_1.resx">
+      <DependentUpon>frm08_PedidoCliente_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm08_PedidoCliente_2.resx">
+      <DependentUpon>frm08_PedidoCliente_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm09_Factura_1.resx">
+      <DependentUpon>frm09_Factura_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm09_Factura_2.resx">
+      <DependentUpon>frm09_Factura_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm10_Cobro_1.resx">
+      <DependentUpon>frm10_Cobro_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm10_Cobro_2.resx">
+      <DependentUpon>frm10_Cobro_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm11_Ventas_1.resx">
+      <DependentUpon>frm11_Ventas_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm11_Ventas_2.resx">
+      <DependentUpon>frm11_Ventas_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm12_Catalogo_1.resx">
+      <DependentUpon>frm12_Catalogo_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm12_Catalogo_2.resx">
+      <DependentUpon>frm12_Catalogo_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm13_ListaPrecios_1.resx">
+      <DependentUpon>frm13_ListaPrecios_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm13_ListaPrecios_2.resx">
+      <DependentUpon>frm13_ListaPrecios_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm14_OrdenProduccion_1.resx">
+      <DependentUpon>frm14_OrdenProduccion_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm14_OrdenProduccion_2.resx">
+      <DependentUpon>frm14_OrdenProduccion_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm15_Estado_1.resx">
+      <DependentUpon>frm15_Estado_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm15_Estado_2.resx">
+      <DependentUpon>frm15_Estado_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm16_PedidoReaprovisionamiento.resx">
+      <DependentUpon>frm16_PedidoReaprovisionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm16_PedidoReaprovisionamiento_2.resx">
+      <DependentUpon>frm16_PedidoReaprovisionamiento_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm17_Compras_1.resx">
+      <DependentUpon>frm17_Compras_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm17_Compras_2.resx">
+      <DependentUpon>frm17_Compras_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm18_PresupuestoProveedor_1.resx">
+      <DependentUpon>frm18_PresupuestoProveedor_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm18_PresupuestoProveedor_2.resx">
+      <DependentUpon>frm18_PresupuestoProveedor_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm19_Maximo.resx">
+      <DependentUpon>frm19_Maximo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm19_Maximo_2.resx">
+      <DependentUpon>frm19_Maximo_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm20_Minimo.resx">
+      <DependentUpon>frm20_Minimo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm07_PresupuestoCliente.resx">
+      <DependentUpon>frm07_PresupuestoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm20_Minimo_2.resx">
+      <DependentUpon>frm20_Minimo_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm21_Produccion_1.resx">
+      <DependentUpon>frm21_Produccion_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm21_Produccion_2.resx">
+      <DependentUpon>frm21_Produccion_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm22_Reportes_1.resx">
+      <DependentUpon>frm22_Reportes_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm22_Reportes_2.resx">
+      <DependentUpon>frm22_Reportes_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm23_Remito_1.resx">
+      <DependentUpon>frm23_Remito_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm23_Remito_2.resx">
+      <DependentUpon>frm23_Remito_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm24_Pagos_1.resx">
+      <DependentUpon>frm24_Pagos_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm24_Pagos_2.resx">
+      <DependentUpon>frm24_Pagos_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm35_Bitacora.resx">
+      <DependentUpon>frm35_Bitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Soporte.resx">
+      <DependentUpon>Menu_Soporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.csproj">
+      <Project>{78f91069-a613-4b23-9920-fb81b25a7dab}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{4c9ad00e-3833-482c-a720-233bf61630d2}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

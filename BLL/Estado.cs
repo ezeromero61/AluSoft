@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BE;
+using DAL;
+
+namespace BLL
+{
+    public class Estado
+    {
+        mapEstado mapper = new mapEstado();
+        public int Agregar(BE.cls15_Estado estado)
+        {
+            int fa;
+            fa = mapper.Agregar(estado);
+            return fa;
+        }
+        public int Editar(BE.cls15_Estado estado)
+        {
+            int fa;
+            fa = mapper.Editar(estado);
+            return fa;
+        }
+        public int Eliminar(BE.cls15_Estado estado)
+        {
+            int fa;
+            fa = mapper.Eliminar(estado);
+            return fa;
+        }
+        public int Max(BE.cls15_Estado estado)
+        {
+            int fa;
+            fa = mapper.MaxId(estado);
+            return fa;
+        }
+        public List<BE.cls15_Estado> ListarCatalogo()
+        {
+            List<BE.cls15_Estado> estado = mapper.Listar();
+            return estado;
+        }
+    }
+}
