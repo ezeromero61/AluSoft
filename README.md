@@ -101,7 +101,7 @@ Proyecto final de **Prácticas Profesionalizantes 3**, Tecnicatura Superior en A
 - Danel Fretes  danelfretes94@gmail.com
 - Lautaro Villarreal  lautaroemmanuel.villa@gmail.com
 - Brian Villarreal  brianvillarreal2450@gmail.com
-- Thomas Velázquez
+- Thomas Velázquez  thomyvelazquez84@gmail.com
 - Ezequiel Romero ezeromero61@gmail.com
 
 Profesores: Javier Pozzo y Rocío Vargas.
