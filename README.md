@@ -98,10 +98,10 @@ BE    ── entidades compartidas entre capas
 
 Proyecto final de **Prácticas Profesionalizantes 3**, Tecnicatura Superior en Análisis de Sistemas, **ISFT N° 172 "Alan Turing"**, Lomas de Zamora.
 
-- Danel Fretes
-- Lautaro Villarreal
-- Brian Villarreal
+- Danel Fretes  danelfretes94@gmail.com
+- Lautaro Villarreal  lautaroemmanuel.villa@gmail.com
+- Brian Villarreal  brianvillarreal2450@gmail.com
 - Thomas Velázquez
-- Ezequiel Romero
+- Ezequiel Romero ezeromero61@gmail.com
 
 Profesores: Javier Pozzo y Rocío Vargas.
