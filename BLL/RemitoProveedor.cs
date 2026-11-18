@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BE;
+using DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BE;
-using DAL;
 
 namespace BLL
 {
@@ -39,6 +40,17 @@ namespace BLL
         {
             List<BE.cls23_RemitoProveedor> prov = mapper.Listar();
             return prov;
+        }
+        public List<BE.cls23_RemitoProveedor> Listar2()
+        {
+            List<BE.cls23_RemitoProveedor> catalogo = mapper.Listar2();
+            return catalogo;
+        }
+        public DataTable Consultar(BE.cls23_RemitoProveedor inventario, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.Consultar(inventario, id);
+            return tabla;
         }
     }
 }

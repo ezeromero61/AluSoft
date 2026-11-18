@@ -11,68 +11,66 @@ namespace DAL
     public class mapPresupuestoCliente
     {
         clsAcceso acc = new clsAcceso();
+        public int ActualizarEstado(int idPresupuesto, string estado)
+        {
+            SqlParameter[] parametro = new SqlParameter[2];
+            parametro[0] = new SqlParameter("@IdPresupuesto", idPresupuesto);
+            parametro[1] = new SqlParameter("@Estado", estado);
+            return acc.Escribir("ActualizarEstadoPresupuestoCliente", parametro);
+        }
+
         public int Agregar(BE.cls07_PresupuestoCliente presupuesto)
         {
             int fa = 0;
-
-            SqlParameter[] parametro = new SqlParameter[15];
-
+            SqlParameter[] parametro = new SqlParameter[16];
             parametro[0] = new SqlParameter("@IdPresupuesto", presupuesto.Idpresupuesto);
             parametro[1] = new SqlParameter("@IdCliente", presupuesto.Idcliente);
             parametro[2] = new SqlParameter("@IdCatalogo", presupuesto.Idcatalogo);
-            parametro[3] = new SqlParameter("@FechaCreacion", presupuesto.FechaCreacion);
-            parametro[4] = new SqlParameter("@FechaValidez", presupuesto.FechaValidez);
-            parametro[5] = new SqlParameter("@Estado", presupuesto.Estado);
-            parametro[6] = new SqlParameter("@Descripcion", presupuesto.Descripcion);
-            parametro[7] = new SqlParameter("@Observaciones", presupuesto.Observaciones);
-            parametro[8] = new SqlParameter("@Subtotal", presupuesto.Subtotal);
-            parametro[9] = new SqlParameter("@Descuento", presupuesto.Descuento);
-            parametro[10] = new SqlParameter("@Impuestos", presupuesto.Impuestos);
-            parametro[11] = new SqlParameter("@Total", presupuesto.Total);
-            parametro[12] = new SqlParameter("@FormaPago", presupuesto.FormaPago);
-            parametro[13] = new SqlParameter("@PlazoEntregaDias", presupuesto.PlazoEntregaDias);
-            parametro[14] = new SqlParameter("@IdLogin", presupuesto.Idlogin);
-
+            parametro[3] = new SqlParameter("@Cantidad", presupuesto.Cantidad);
+            parametro[4] = new SqlParameter("@FechaCreacion", presupuesto.FechaCreacion);
+            parametro[5] = new SqlParameter("@FechaValidez", presupuesto.FechaValidez);
+            parametro[6] = new SqlParameter("@Estado", presupuesto.Estado);
+            parametro[7] = new SqlParameter("@Descripcion", presupuesto.Descripcion);
+            parametro[8] = new SqlParameter("@Observaciones", presupuesto.Observaciones);
+            parametro[9] = new SqlParameter("@Subtotal", presupuesto.Subtotal);
+            parametro[10] = new SqlParameter("@Descuento", presupuesto.Descuento);
+            parametro[11] = new SqlParameter("@Impuestos", presupuesto.Impuestos);
+            parametro[12] = new SqlParameter("@Total", presupuesto.Total);
+            parametro[13] = new SqlParameter("@FormaPago", presupuesto.FormaPago);
+            parametro[14] = new SqlParameter("@PlazoEntregaDias", presupuesto.PlazoEntregaDias);
+            parametro[15] = new SqlParameter("@DigitoVerificador", presupuesto.DigitoVerificador);
             fa = acc.Escribir("AgregarPresupuestoCliente", parametro);
-
             return fa;
         }
         public int Editar(BE.cls07_PresupuestoCliente presupuesto)
         {
             int fa = 0;
-
-            SqlParameter[] parametro = new SqlParameter[15];
-
+            SqlParameter[] parametro = new SqlParameter[16];
             parametro[0] = new SqlParameter("@IdPresupuesto", presupuesto.Idpresupuesto);
             parametro[1] = new SqlParameter("@IdCliente", presupuesto.Idcliente);
             parametro[2] = new SqlParameter("@IdCatalogo", presupuesto.Idcatalogo);
-            parametro[3] = new SqlParameter("@FechaCreacion", presupuesto.FechaCreacion);
-            parametro[4] = new SqlParameter("@FechaValidez", presupuesto.FechaValidez);
-            parametro[5] = new SqlParameter("@Estado", presupuesto.Estado);
-            parametro[6] = new SqlParameter("@Descripcion", presupuesto.Descripcion);
-            parametro[7] = new SqlParameter("@Observaciones", presupuesto.Observaciones);
-            parametro[8] = new SqlParameter("@Subtotal", presupuesto.Subtotal);
-            parametro[9] = new SqlParameter("@Descuento", presupuesto.Descuento);
-            parametro[10] = new SqlParameter("@Impuestos", presupuesto.Impuestos);
-            parametro[11] = new SqlParameter("@Total", presupuesto.Total);
-            parametro[12] = new SqlParameter("@FormaPago", presupuesto.FormaPago);
-            parametro[13] = new SqlParameter("@PlazoEntregaDias", presupuesto.PlazoEntregaDias);
-            parametro[14] = new SqlParameter("@IdLogin", presupuesto.Idlogin);
-
+            parametro[3] = new SqlParameter("@Cantidad", presupuesto.Cantidad);
+            parametro[4] = new SqlParameter("@FechaCreacion", presupuesto.FechaCreacion);
+            parametro[5] = new SqlParameter("@FechaValidez", presupuesto.FechaValidez);
+            parametro[6] = new SqlParameter("@Estado", presupuesto.Estado);
+            parametro[7] = new SqlParameter("@Descripcion", presupuesto.Descripcion);
+            parametro[8] = new SqlParameter("@Observaciones", presupuesto.Observaciones);
+            parametro[9] = new SqlParameter("@Subtotal", presupuesto.Subtotal);
+            parametro[10] = new SqlParameter("@Descuento", presupuesto.Descuento);
+            parametro[11] = new SqlParameter("@Impuestos", presupuesto.Impuestos);
+            parametro[12] = new SqlParameter("@Total", presupuesto.Total);
+            parametro[13] = new SqlParameter("@FormaPago", presupuesto.FormaPago);
+            parametro[14] = new SqlParameter("@PlazoEntregaDias", presupuesto.PlazoEntregaDias);
+            parametro[15] = new SqlParameter("@DigitoVerificador", presupuesto.DigitoVerificador);
             fa = acc.Escribir("EditarPresupuestoCliente", parametro);
-
             return fa;
         }
         public int Eliminar(BE.cls07_PresupuestoCliente presupuesto)
         {
             int fa = 0;
-
             SqlParameter[] parametro = new SqlParameter[1];
-
             parametro[0] = new SqlParameter("@IdPresupuesto", presupuesto.Idpresupuesto);
-
             fa = acc.Escribir("EliminarPresupuestoCliente", parametro);
-
             return fa;
         }
         public int MaxId(BE.cls07_PresupuestoCliente presupuesto)
@@ -97,9 +95,11 @@ namespace DAL
 
                 presupuesto.Idpresupuesto = int.Parse(dr["IdPresupuesto"].ToString());
                 presupuesto.Idcliente = int.Parse(dr["IdCliente"].ToString());
-                presupuesto.Nombre = dr["Nombre"].ToString();
-                presupuesto.Apellido = dr["Apellido"].ToString();
+                presupuesto.Nombre = clsCifrado.DesencriptarString(dr["Nombre"].ToString());
+                presupuesto.Apellido =clsCifrado.DesencriptarString(dr["Apellido"].ToString());
                 presupuesto.IdCatalogo = int.Parse(dr["IdCatalogo"].ToString());
+                presupuesto.Cantidad= int.Parse(dr["Cantidad"].ToString());
+                presupuesto.Precio = int.Parse(dr["PrecioUnitario"].ToString());
                 presupuesto.Producto = dr["NombreInventario"].ToString();
                 presupuesto.FechaCreacion = DateTime.Parse(dr["FechaCreacion"].ToString());
                 presupuesto.FechaValidez = DateTime.Parse(dr["FechaValidez"].ToString());
@@ -112,8 +112,7 @@ namespace DAL
                 presupuesto.Total = int.Parse(dr["Total"].ToString());
                 presupuesto.FormaPago = dr["FormaPago"].ToString();
                 presupuesto.PlazoEntregaDias = int.Parse(dr["PlazoEntregaDias"].ToString());
-                presupuesto.Idlogin = int.Parse(dr["IdLogin"].ToString());
-                presupuesto.Combo = "(ID: " + presupuesto.Idpresupuesto + ") " + presupuesto.Nombre+" " + presupuesto.Producto;
+                presupuesto.Combo = "N° " + presupuesto.Idpresupuesto + " - " + presupuesto.Nombre + " " + presupuesto.Apellido + " - " + presupuesto.Producto;
                 ls.Add(presupuesto);
             }
 
@@ -132,6 +131,7 @@ namespace DAL
                 presupuesto.Idpresupuesto = int.Parse(dr["IdPresupuesto"].ToString());
                 presupuesto.Idcliente = int.Parse(dr["IdCliente"].ToString());
                 presupuesto.Idcatalogo = int.Parse(dr["IdCatalogo"].ToString());
+                presupuesto.Cantidad = int.Parse(dr["Cantidad"].ToString());
                 presupuesto.FechaCreacion = DateTime.Parse(dr["FechaCreacion"].ToString());
                 presupuesto.FechaValidez = DateTime.Parse(dr["FechaValidez"].ToString());
                 presupuesto.Estado = dr["Estado"].ToString();
@@ -143,7 +143,6 @@ namespace DAL
                 presupuesto.Total = int.Parse(dr["Total"].ToString());
                 presupuesto.FormaPago = dr["FormaPago"].ToString();
                 presupuesto.PlazoEntregaDias = int.Parse(dr["PlazoEntregaDias"].ToString());
-                presupuesto.Idlogin = int.Parse(dr["IdLogin"].ToString());
 
                 ls.Add(presupuesto);
             }
@@ -160,6 +159,7 @@ namespace DAL
                 presupuesto.Idpresupuesto = int.Parse(dr["IdPresupuesto"].ToString());
                 presupuesto.Idcliente = int.Parse(dr["IdCliente"].ToString());
                 presupuesto.Idcatalogo = int.Parse(dr["IdCatalogo"].ToString());
+                presupuesto.Cantidad = int.Parse(dr["Cantidad"].ToString());
                 presupuesto.FechaCreacion = DateTime.Parse(dr["FechaCreacion"].ToString());
                 presupuesto.FechaValidez = DateTime.Parse(dr["FechaValidez"].ToString());
                 presupuesto.Estado = dr["Estado"].ToString();
@@ -171,7 +171,6 @@ namespace DAL
                 presupuesto.Total = int.Parse(dr["Total"].ToString());
                 presupuesto.FormaPago = dr["FormaPago"].ToString();
                 presupuesto.PlazoEntregaDias = int.Parse(dr["PlazoEntregaDias"].ToString());
-                presupuesto.Idlogin = int.Parse(dr["IdLogin"].ToString());
             }
             return tabla;
         }
@@ -180,6 +179,7 @@ namespace DAL
             SqlParameter[] parametro = new SqlParameter[1];
             parametro[0] = new SqlParameter("@IdPresupuesto", id);
             DataTable tabla = acc.LeerConParametro("BusquedaConIdPresupuestoClienteCombinado", parametro);
+            clsCifrado.DescifrarColumnas(tabla, "Nombre", "Apellido");
             foreach (DataRow dr in tabla.Rows)
             {
                 presupuesto.Idpresupuesto = int.Parse(dr["IdPresupuesto"].ToString());
@@ -187,6 +187,8 @@ namespace DAL
                 presupuesto.Nombre = dr["Nombre"].ToString();
                 presupuesto.Apellido = dr["Apellido"].ToString();
                 presupuesto.IdCatalogo = int.Parse(dr["IdCatalogo"].ToString());
+                presupuesto.Cantidad = int.Parse(dr["Cantidad"].ToString());
+                presupuesto.Precio = int.Parse(dr["PrecioUnitario"].ToString());
                 presupuesto.Producto = dr["NombreInventario"].ToString();
                 presupuesto.FechaCreacion = DateTime.Parse(dr["FechaCreacion"].ToString());
                 presupuesto.FechaValidez = DateTime.Parse(dr["FechaValidez"].ToString());
@@ -199,26 +201,10 @@ namespace DAL
                 presupuesto.Total = int.Parse(dr["Total"].ToString());
                 presupuesto.FormaPago = dr["FormaPago"].ToString();
                 presupuesto.PlazoEntregaDias = int.Parse(dr["PlazoEntregaDias"].ToString());
-                presupuesto.Idlogin = int.Parse(dr["IdLogin"].ToString());
-                presupuesto.Combo = "(ID: " + presupuesto.Idpresupuesto + ") " + presupuesto.Nombre + " " + presupuesto.Producto;
+                presupuesto.Combo = presupuesto.Idpresupuesto + " " + presupuesto.Nombre + " " + presupuesto.Apellido;
 
             }
             return tabla;
-        }
-        public List<string> ListarCombo()
-        {
-            List<string> ls = new List<string>();
-            DataTable tabla = acc.Leer("BusquedaConIdPresupuestoClienteCombinado", null);
-            foreach (DataRow dr in tabla.Rows)
-            {
-                BE.cls03_Cliente cliente = new BE.cls03_Cliente();
-                cliente.Idcliente = int.Parse(dr["IdCliente"].ToString());
-                cliente.Nombre = (dr["Nombre"].ToString());
-                cliente.Apellido = (dr["Apellido"].ToString());
-                string combo = "(ID: " + cliente.Idcliente + ") " + cliente.Nombre + " " + cliente.Apellido;
-                ls.Add(combo);
-            }
-            return ls;
         }
     }
 }

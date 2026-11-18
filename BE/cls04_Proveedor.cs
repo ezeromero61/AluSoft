@@ -13,7 +13,14 @@ namespace BE
 		public int Idproveedor
         {
 			get { return idproveedor; }
-			set { idproveedor = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idproveedor = value; }
 		}
 		private string nombre_empresa;
 
@@ -21,13 +28,6 @@ namespace BE
         {
 			get { return nombre_empresa; }
 			set { nombre_empresa = value; }
-		}
-		private int digitoverificador;
-
-		public int DigitoVerificador
-		{
-			get { return digitoverificador; }
-			set { digitoverificador = value; }
 		}
 
 	}

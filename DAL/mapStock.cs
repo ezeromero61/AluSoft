@@ -43,6 +43,43 @@ namespace DAL
 
             return fa;
         }
+        // Cantidad que entró al stock con un remito (ajusta por diferencia si se edita).
+        public int IngresarStockRemito(int idRemito, int idPresupuesto, int idStock, int cantidad)
+        {
+            SqlParameter[] parametro = new SqlParameter[4];
+            parametro[0] = new SqlParameter("@IdRemitoProveedor", idRemito);
+            parametro[1] = new SqlParameter("@IdPresupuestoProveedor", idPresupuesto);
+            parametro[2] = new SqlParameter("@IdStock", idStock);
+            parametro[3] = new SqlParameter("@Cantidad", cantidad);
+            return acc.Escribir("IngresarStockRemito", parametro);
+        }
+        public DataTable ListarIngresosRemito()
+        {
+            return acc.Leer("ListarMovimientoStockRemito", null);
+        }
+        // Script 13: descuenta del stock lo que usa un pedido (queda como movimiento negativo de la orden).
+        public int DescontarStockPedido(int idOrden, int idStock, int cantidad)
+        {
+            SqlParameter[] parametro = new SqlParameter[3];
+            parametro[0] = new SqlParameter("@IdOrdenProduccion", idOrden);
+            parametro[1] = new SqlParameter("@IdStock", idStock);
+            parametro[2] = new SqlParameter("@Cantidad", cantidad);
+            return acc.Escribir("DescontarStockPedido", parametro);
+        }
+        // Script 13: devuelve al stock lo que había descontado un pedido que se elimina.
+        public int DevolverStockPedido(int idPedido)
+        {
+            SqlParameter[] parametro = new SqlParameter[1];
+            parametro[0] = new SqlParameter("@IdPedido", idPedido);
+            return acc.Escribir("DevolverStockPedido", parametro);
+        }
+        public int SumarStock(int idStock, int cantidad)
+        {
+            SqlParameter[] parametro = new SqlParameter[2];
+            parametro[0] = new SqlParameter("@IdStock", idStock);
+            parametro[1] = new SqlParameter("@Cantidad", cantidad);
+            return acc.Escribir("SumarStock", parametro);
+        }
         public int Eliminar(BE.cls02_Stock stock)
         {
             int fa = 0;
@@ -62,11 +99,8 @@ namespace DAL
 
             foreach (DataRow dr in tabla.Rows)
             {
-                //BE.cls01_Inventario inventario = new BE.cls01_Inventario();
                 stock.Idstock = int.Parse(dr["IdStock"].ToString());
-                //ls=(inventario.Idinventario);
             }
-
 
             return ls = stock.Idstock;
         }
@@ -82,9 +116,9 @@ namespace DAL
 
                 stock.Idstock = int.Parse(dr["IdStock"].ToString());
                 stock.Idinventario = int.Parse(dr["IdInventario"].ToString());
-                stock.Cantidad_actual = int.Parse(dr["CantidadActual"].ToString());
-                stock.Cantidad_minima = int.Parse(dr["CantidadMinima"].ToString());
-                stock.Cantidad_maxima = int.Parse(dr["CantidadMaxima"].ToString());
+                stock.Cantidad_actual = (dr["CantidadActual"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadActual"]));
+                stock.Cantidad_minima = (dr["CantidadMinima"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadMinima"]));
+                stock.Cantidad_maxima = (dr["CantidadMaxima"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadMaxima"]));
 
                 ls.Add(stock);
             }
@@ -100,17 +134,18 @@ namespace DAL
                 BE.cls02_Stock stock = new BE.cls02_Stock();
                 stock.Idstock = int.Parse(dr["IdStock"].ToString());
                 stock.Idinventario = int.Parse(dr["IdInventario"].ToString());
-                stock.Nombre= (dr["CantidadActual"].ToString());
-                stock.Descripcion = (dr["CantidadActual"].ToString());
+                stock.Nombre= (dr["Nombre"].ToString());
+                stock.Descripcion = (dr["Descripcion"].ToString());
                 stock.Tipo = (dr["Tipo"].ToString());
                 stock.Alto = int.Parse(dr["Alto"].ToString());
                 stock.Largo = int.Parse(dr["Largo"].ToString());
                 stock.Ancho = int.Parse(dr["Ancho"].ToString());
                 stock.Material = (dr["Material"].ToString());
                 stock.Color = (dr["Color"].ToString());
-                stock.Cantidad_actual = int.Parse(dr["CantidadActual"].ToString());
-                stock.Cantidad_minima = int.Parse(dr["CantidadMinima"].ToString());
-                stock.Cantidad_maxima = int.Parse(dr["CantidadMaxima"].ToString());
+                stock.Cantidad_actual = (dr["CantidadActual"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadActual"]));
+                stock.Cantidad_minima = (dr["CantidadMinima"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadMinima"]));
+                stock.Cantidad_maxima = (dr["CantidadMaxima"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadMaxima"]));
+                stock.Combo =stock.Nombre;
                 ls.Add(stock);
             }
             return ls;
@@ -133,9 +168,9 @@ namespace DAL
                 stock.Ancho = int.Parse(dr["Ancho"].ToString());
                 stock.Material = dr["Material"].ToString();
                 stock.Color = dr["Color"].ToString();
-                stock.Cantidad_actual = int.Parse(dr["CantidadActual"].ToString());
-                stock.Cantidad_minima = int.Parse(dr["CantidadMinima"].ToString());
-                stock.Cantidad_maxima = int.Parse(dr["CantidadMaxima"].ToString());
+                stock.Cantidad_actual = (dr["CantidadActual"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadActual"]));
+                stock.Cantidad_minima = (dr["CantidadMinima"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadMinima"]));
+                stock.Cantidad_maxima = (dr["CantidadMaxima"] == DBNull.Value ? 0 : Convert.ToInt32(dr["CantidadMaxima"]));
             }
             return tabla;
         }

@@ -48,14 +48,14 @@ namespace BLL
             List<BE.cls01_Inventario> inventario = mapper.Listar();
             return inventario;
         }
+        public List<BE.cls01_Inventario> ListarCatalogo2()
+        {
+            List<BE.cls01_Inventario> inventario = mapper.Listar2();
+            return inventario;
+        }
         public List<BE.cls01_Inventario> ListarId()
         {
             List<BE.cls01_Inventario> inventario = mapper.ListarId();
-            return inventario;
-        }
-        public List<BE.cls01_Inventario> ListarConId(int id)
-        {
-            List<BE.cls01_Inventario> inventario = mapper.ListarConID(id);
             return inventario;
         }
     }

@@ -13,28 +13,43 @@ namespace BE
 		public int Idlista
 		{
 			get { return idlista; }
-			set { idlista = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlista = value; }
 		}
 		private int idcatalogo;
 
-		//public int Idcatalogo
-		//{
-		//	get { return idcatalogo; }
-		//	set { idcatalogo = value; }
-		//}
 		private DateTime fecha;
 
 		public DateTime Fecha
 		{
 			get { return fecha; }
-			set { fecha = value; }
+			set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fecha = value; }
 		}
 		private int precio;
 
 		public int Precio
 		{
 			get { return precio; }
-			set { precio = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                precio = value; }
 		}
 
 	}

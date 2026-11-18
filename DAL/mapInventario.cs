@@ -96,6 +96,27 @@ namespace DAL
             }
             return ls;
         }
+        public List<BE.cls01_Inventario> Listar2()
+        {
+            List<BE.cls01_Inventario> ls = new List<BE.cls01_Inventario>();
+            DataTable tabla = acc.Leer("Obtener_01_InventarioCombinado", null);
+            foreach (DataRow dr in tabla.Rows)
+            {
+                BE.cls01_Inventario inventario = new BE.cls01_Inventario();
+                inventario.Idinventario = int.Parse(dr["IdInventario"].ToString());
+                inventario.Nombre = dr["Nombre"].ToString();
+                inventario.Descripcion = dr["Descripcion"].ToString();
+                inventario.Tipo = dr["Tipo"].ToString();
+                inventario.Alto = int.Parse(dr["Alto"].ToString());
+                inventario.Largo = int.Parse(dr["Largo"].ToString());
+                inventario.Ancho = int.Parse(dr["Ancho"].ToString());
+                inventario.Material = dr["Material"].ToString();
+                inventario.Color = dr["Color"].ToString();
+                inventario.Combo = inventario.Nombre;
+                ls.Add(inventario);   
+            }
+            return ls;
+        }
         public List<BE.cls01_Inventario> ListarId()
         {
             List<BE.cls01_Inventario> ls = new List<BE.cls01_Inventario>();
@@ -119,34 +140,10 @@ namespace DAL
 
             foreach (DataRow dr in tabla.Rows)
             {
-                //BE.cls01_Inventario inventario = new BE.cls01_Inventario();
                 inventario.Idinventario = int.Parse(dr["IdInventario"].ToString());
-                //ls=(inventario.Idinventario);
             }
 
             return ls=inventario.Idinventario;
-        }
-        public List<BE.cls01_Inventario> ListarConID(int id)
-        {
-            List<BE.cls01_Inventario> ls = new List<BE.cls01_Inventario>();
-            SqlParameter[] parametro = new SqlParameter[1];
-            parametro[0] = new SqlParameter("@IdInventario", id);
-            DataTable tabla = acc.Leer("ListarInventario", parametro);
-            foreach (DataRow dr in tabla.Rows)
-            {
-                BE.cls01_Inventario inventario = new BE.cls01_Inventario();
-                inventario.Idinventario = int.Parse(dr["IdInventario"].ToString());
-                inventario.Nombre = dr["Nombre"].ToString();
-                inventario.Descripcion = dr["Descripcion"].ToString();
-                inventario.Tipo = dr["Tipo"].ToString();
-                inventario.Alto = int.Parse(dr["Alto"].ToString());
-                inventario.Largo = int.Parse(dr["Largo"].ToString());
-                inventario.Ancho = int.Parse(dr["Ancho"].ToString());
-                inventario.Material = dr["Material"].ToString();
-                inventario.Color = dr["Color"].ToString();
-                ls.Add(inventario);
-            }
-            return ls;
         }
     }
 }

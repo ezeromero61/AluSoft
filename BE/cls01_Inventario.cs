@@ -13,14 +13,28 @@ namespace BE
 		public int Idinventario
         {
 			get { return idinventario; }
-			set { idinventario = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idinventario = value; }
 		}
 		private int idstock;
 
 		public int Idstock
         {
 			get { return idstock; }
-			set { idstock = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idstock = value; }
 		}
 
 		private string nombre;
@@ -44,21 +58,42 @@ namespace BE
 		public int Alto
         {
 			get { return alto; }
-			set { alto = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                alto = value; }
 		}
 		private int largo;
 
 		public int Largo
 		{
 			get { return largo; }
-			set { largo = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                largo = value; }
 		}
 		private int ancho;
 
 		public int Ancho
 		{
 			get { return ancho; }
-			set { ancho = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                ancho = value; }
 		}
 
 		public string Tipo
@@ -66,16 +101,13 @@ namespace BE
 			get { return tipo; }
 			set { tipo = value; }
 		}
-        // Material
         private string material;
         public string Material
         {
             get { return material; }
             set { material = value; }
         }
-        // Ej: Aluminio, PVC
 
-        // Color
         private string color;
         public string Color
         {
@@ -89,6 +121,5 @@ namespace BE
 			get { return combo; }
 			set { combo = value; }
 		}
-
 	}
 }

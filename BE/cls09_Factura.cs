@@ -8,19 +8,21 @@ namespace BE
 {
     public class cls09_Factura
     {
-        // Identificación
         private int idfactura;
         public int Idfactura
         {
             get { return idfactura; }
-            set { idfactura = value; }
+            set
+            {
+                idfactura = value; }
         }
 
         private string numerofactura;
         public string NumeroFactura
         {
             get { return numerofactura; }
-            set { numerofactura = value; }
+            set
+            { numerofactura = value; }
         }
 
         private string tipofactura;
@@ -30,41 +32,93 @@ namespace BE
             set { tipofactura = value; }
         }
 
-        // Relaciones
         private int idpedido;
         public int IdPedido
         {
             get { return idpedido; }
-            set { idpedido = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idpedido = value; }
+        }
+        private int idinventario;
+
+        public int Idinventario
+        {
+            get { return idinventario; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idinventario = value; }
+        }
+        private string nombreinventario;
+
+        public string Nombreinventario
+        {
+            get { return nombreinventario; }
+            set { nombreinventario = value; }
         }
 
         private int idcliente;
         public int IdCliente
         {
             get { return idcliente; }
-            set { idcliente = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                }
+                idcliente = value; }
         }
 
-        // Datos cliente
         private string nombrecliente;
         public string NombreCliente
         {
             get { return nombrecliente; }
             set { nombrecliente = value; }
         }
+        private string apellidocliente;
 
-        private string documento;
-        public string Documento
+        public string Apellidocliente
         {
-            get { return documento; }
-            set { documento = value; }
+            get { return apellidocliente; }
+            set { apellidocliente = value; }
         }
 
-        private string cuit;
-        public string CUIT
+        private int documento;
+        public int Documento
+        {
+            get { return documento; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                documento = value; }
+        }
+
+        private double cuit;
+        public double CUIT
         {
             get { return cuit; }
-            set { cuit = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                cuit = value; }
         }
 
         private string condicionIVA;
@@ -81,51 +135,88 @@ namespace BE
             set { direccionfiscal = value; }
         }
 
-        // Fechas
-        private DateTime? fechaemision;
-        public DateTime? FechaEmision
+        private DateTime fechaemision;
+        public DateTime FechaEmision
         {
             get { return fechaemision; }
-            set { fechaemision = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaemision = value; }
         }
 
-        private DateTime? fechavencimiento;
-        public DateTime? FechaVencimiento
+        private DateTime fechavencimiento;
+        public DateTime FechaVencimiento
         {
             get { return fechavencimiento; }
-            set { fechavencimiento = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechavencimiento = value; }
         }
 
-        // Importes
         private decimal subtotal;
         public decimal Subtotal
         {
             get { return subtotal; }
-            set { subtotal = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                subtotal = value; }
         }
 
         private decimal descuento;
         public decimal Descuento
         {
             get { return descuento; }
-            set { descuento = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                descuento = value; }
         }
 
         private decimal iva;
         public decimal IVA
         {
             get { return iva; }
-            set { iva = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                iva = value; }
         }
 
         private decimal total;
         public decimal Total
         {
             get { return total; }
-            set { total = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                total = value; }
         }
 
-        // Pago
         private string formapago;
         public string Formapago
         {
@@ -140,7 +231,6 @@ namespace BE
             set { pagada = value; }
         }
 
-        // Estado
         private string estado;
         public string Estado
         {
@@ -148,7 +238,6 @@ namespace BE
             set { estado = value; }
         }
 
-        // AFIP
         private string cae;
         public string CAE
         {
@@ -163,7 +252,6 @@ namespace BE
             set { fechavencimientoCAE = value; }
         }
 
-        // Observaciones
         private string observaciones;
         public string Observaciones
         {
@@ -171,13 +259,27 @@ namespace BE
             set { observaciones = value; }
         }
 
-        // Usuario
         private int idlogin;
 
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
+        private string combo;
+
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+
     }
 }

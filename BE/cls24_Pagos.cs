@@ -13,23 +13,44 @@ namespace BE
         public int IdPago
         {
             get { return idPago; }
-            set { idPago = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idPago = value; }
         }
 
-        private int idCliente;
+        private int idProveedor;
 
-        public int IdCliente
+        public int IdProveedor
         {
-            get { return idCliente; }
-            set { idCliente = value; }
+            get { return idProveedor; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idProveedor = value; }
         }
 
-        private int idFactura;
+        private int idCompras;
 
-        public int IdFactura
+        public int IdCompras
         {
-            get { return idFactura; }
-            set { idFactura = value; }
+            get { return idCompras; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idCompras = value; }
         }
 
         private DateTime fechaPago;
@@ -37,7 +58,14 @@ namespace BE
         public DateTime FechaPago
         {
             get { return fechaPago; }
-            set { fechaPago = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaPago = value; }
         }
 
         private decimal importe;
@@ -45,7 +73,14 @@ namespace BE
         public decimal Importe
         {
             get { return importe; }
-            set { importe = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                importe = value; }
         }
 
         private string formaPago;
@@ -79,5 +114,27 @@ namespace BE
             get { return anulado; }
             set { anulado = value; }
         }
+        private string combo;
+
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+        private string apellido;
+
+        public string Apellido
+        {
+            get { return apellido; }
+            set { apellido = value; }
+        }
+
     }
 }

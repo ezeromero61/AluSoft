@@ -19,12 +19,28 @@ namespace BE
         public int IdLogin
         {
             get => idlogin;
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value;
+            }
         }
         public int IdRol
         {
             get => idrol;
-            set { idrol = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idrol = value;
+            }
         }
         public string Usuario
         {
@@ -39,7 +55,15 @@ namespace BE
         public int DigitoVerificador
         {
             get => digitoverificador;
-            set { digitoverificador = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                digitoverificador = value;
+            }
         }
 
         #endregion

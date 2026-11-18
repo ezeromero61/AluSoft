@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BE;
+using DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BE;
-using DAL;
 
 namespace BLL
 {
@@ -39,6 +40,17 @@ namespace BLL
         {
             List<BE.cls20_Minimo> minimo = mapper.Listar();
             return minimo;
+        }
+        public List<BE.cls20_Minimo> ListarCatalogo2()
+        {
+            List<BE.cls20_Minimo> stock = mapper.Listar2();
+            return stock;
+        }
+        public DataTable Consultar(BE.cls20_Minimo stock, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.Consultar(stock, id);
+            return tabla;
         }
     }
 }

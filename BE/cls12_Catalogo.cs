@@ -13,7 +13,14 @@ namespace BE
         public int Idcatalogo
         {
             get { return idcatalogo; }
-            set { idcatalogo = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcatalogo = value; }
         }
 
         private int idlistaprecio;
@@ -21,7 +28,14 @@ namespace BE
         public int Idlistaprecio
         {
             get { return idlistaprecio; }
-            set { idlistaprecio = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlistaprecio = value; }
         }
 
         private int preciounitario;
@@ -29,7 +43,14 @@ namespace BE
         public int Preciounitario
         {
             get { return preciounitario; }
-            set { preciounitario = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                preciounitario = value; }
         }
         private string disponibilidad;
 
@@ -43,15 +64,14 @@ namespace BE
         public int Cantidad
         {
             get { return cantidad; }
-            set { cantidad = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El valor no puede ser negativo.");
+                }
+                cantidad = value; }
         }
-        //private string combo;
-
-        //public string Combo
-        //{
-        //    get { return combo; }
-        //    set { combo = value; }
-        //}
-
     }
 }

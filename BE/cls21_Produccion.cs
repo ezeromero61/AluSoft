@@ -13,35 +13,70 @@ namespace BE
         public int Idproduccion
         {
             get { return idproduccion; }
-            set { idproduccion = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idproduccion = value; }
         }
         private int idordenproduccion;
 
         public int Idordenproduccion
         {
             get { return idordenproduccion; }
-            set { idordenproduccion = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idordenproduccion = value; }
         }
         private int idlogin;
 
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
         private int idstock;
 
         public int Idstock
         {
             get { return idstock; }
-            set { idstock = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idstock = value; }
         }
         private DateTime fecha;
 
         public DateTime Fecha
         {
             get { return fecha; }
-            set { fecha = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fecha = value; }
         }
         private string estado;
 
@@ -50,7 +85,21 @@ namespace BE
             get { return estado; }
             set { estado = value; }
         }
+        private string combo;
 
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
 
     }
 }

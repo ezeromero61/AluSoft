@@ -8,38 +8,75 @@ namespace BE
 {
     public class cls07_PresupuestoCliente
     {
-        // Identificación
         private int idpresupuesto;
 
         public int Idpresupuesto
         {
             get { return idpresupuesto; }
-            set { idpresupuesto = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idpresupuesto = value; }
         }
-        // Cliente
         private int idcliente;
 
         public int Idcliente
         {
             get { return idcliente; }
-            set { idcliente = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcliente = value; }
         }
-        // Fechas
+        private int cantidad;
+
+        public int Cantidad
+        {
+            get { return cantidad; }
+            set {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                cantidad = value;
+            }       
+        }
+
         private DateTime fechacreacion;
 
         public DateTime FechaCreacion
         {
             get { return fechacreacion; }
-            set { fechacreacion = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechacreacion = value; }
         }
         private DateTime fechavalidez;
 
         public DateTime FechaValidez
         {
             get { return fechavalidez; }
-            set { fechavalidez = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechavalidez = value; }
         }
-        // Estado del presupuesto
         private string estado;
 
         public string Estado
@@ -47,13 +84,19 @@ namespace BE
             get { return estado; }
             set { estado = value; }
         }
-        // Descripción general
         private int idcatalogo;
 
         public int Idcatalogo
         {
             get { return idcatalogo; }
-            set { idcatalogo = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcatalogo = value; }
         }
 
         private string descripcion;
@@ -70,36 +113,62 @@ namespace BE
             get { return observaciones; }
             set { observaciones = value; }
         }
-        // Totales
         private int subtotal;
 
         public int Subtotal
         {
             get { return subtotal; }
-            set { subtotal = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                subtotal = value; }
         }
         private int descuento;
 
         public int Descuento
         {
             get { return descuento; }
-            set { descuento = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                descuento = value; }
         }
         private int impuestos;
 
         public int Impuestos
         {
             get { return impuestos; }
-            set { impuestos = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                impuestos = value; }
         }
         private int total;
 
         public int Total
         {
             get { return total; }
-            set { total = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                total = value; }
         }
-        // Condiciones comerciales
         private string formapago;
 
         public string FormaPago
@@ -112,15 +181,36 @@ namespace BE
         public int PlazoEntregaDias
         {
             get { return plazoentregaDias; }
-            set { plazoentregaDias = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                plazoentregaDias = value; }
         }
-        // Usuario que lo creó
         private int idlogin;
 
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
+        private int digitoverificador;
+
+        public int DigitoVerificador
+        {
+            get { return digitoverificador; }
+            set { digitoverificador = value; }
+        }
+
     }
 }

@@ -13,14 +13,28 @@ namespace BE
         public int Idcompras
         {
             get { return idcompras; }
-            set { idcompras = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcompras = value; }
         }
         private int idpago;
 
         public int Idpago
         {
             get { return idpago; }
-            set { idpago = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idpago = value; }
         }
 
         private int idstock;
@@ -28,42 +42,104 @@ namespace BE
         public int Idstock
         {
             get { return idstock; }
-            set { idstock = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idstock = value; }
         }
         private int cantidad;
 
         public int Cantidad
         {
             get { return cantidad; }
-            set { cantidad = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                cantidad = value; }
         }
         private int myVar;
 
         public int MyProperty
         {
             get { return myVar; }
-            set { myVar = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                myVar = value; }
         }
         private DateTime fecha;
 
         public DateTime Fecha
         {
             get { return fecha; }
-            set { fecha = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fecha = value; }
         }
         private int total;
 
         public int Total
         {
             get { return total; }
-            set { total = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                total = value; }
         }
         private int subtotal;
 
         public int Subtotal
         {
             get { return subtotal; }
-            set { subtotal = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                subtotal = value; }
+        }
+        public int IdProveedor { get; set; }
+        public int IdPedidoReaprovisionamiento { get; set; }
+        public string NombreEmpresa { get; set; }
+        public decimal Pagado { get; set; }
+        public decimal Saldo { get { return Total - Pagado; } }
+
+        private string combo;
+
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
         }
 
     }

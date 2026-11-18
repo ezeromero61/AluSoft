@@ -12,6 +12,10 @@ namespace BLL
     public class PedidoReaprovisionamiento
     {
         mapPedidoReaprovisionamiento mapper = new mapPedidoReaprovisionamiento();
+        public int ActualizarEstado(int idPedido, string estado)
+        {
+            return mapper.ActualizarEstado(idPedido, estado);
+        }
         public int Agregar(BE.cls16_PedidoReaprovisionamiento pedidio)
         {
             int fa;

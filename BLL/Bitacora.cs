@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,15 +45,35 @@ namespace BLL
             List<BE.cls35_Bitacora> inventario = mapper.ListarCompleto();
             return inventario;
         }
-        //public List<BE.cls35_Bitacora> ListarId()
-        //{
-        //    List<BE.cls35_Bitacora> inventario = mapper.ListarId();
-        //    return inventario;
-        //}
-        //public List<BE.cls35_Bitacora> ListarConId(int id)
-        //{
-        //    List<BE.cls35_Bitacora> inventario = mapper.ListarConID(id);
-        //    return inventario;
-        //}
+        public DataTable ConsultarConFecha(BE.cls35_Bitacora inventario, DateTime id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.ConsultarConFecha(inventario, id);
+            return tabla;
+        }
+        public DataTable ConsultarConAccion(BE.cls35_Bitacora inventario, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.ConsultarConAccion(inventario, id);
+            return tabla;
+        }
+        public DataTable ConsultarConRol(BE.cls35_Bitacora inventario, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.ConsultarConRol(inventario, id);
+            return tabla;
+        }
+        public DataTable ConsultarConTabla(BE.cls35_Bitacora inventario, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.ConsultarConTabla(inventario, id);
+            return tabla;
+        }
+        public DataTable ConsultarConUsuario(BE.cls35_Bitacora inventario, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.ConsultarConUsuario(inventario, id);
+            return tabla;
+        }
     }
 }

@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class cls10_Cobro
+    public class cls10_Cobro:cls09_Factura
     {
-        // Identificación
         private int idcobro;
         public int Idcobro
         {
             get { return idcobro; }
-            set { idcobro = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcobro = value; }
         }
 
         private string numeroCobro;
@@ -23,39 +29,75 @@ namespace BE
             set { numeroCobro = value; }
         }
 
-        // Relación con factura
         private int idfactura;
         public int Idfactura
         {
             get { return idfactura; }
-            set { idfactura = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idfactura = value; }
         }
 
-        // Cliente (opcional pero útil para consultas)
         private int idcliente;
         public int Idcliente
         {
             get { return idcliente; }
-            set { idcliente = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcliente = value; }
         }
 
-        // Fecha del cobro
-        private DateTime? fechacobro;
-        public DateTime? Fechacobro
+        private DateTime fechacobro;
+        public DateTime Fechacobro
         {
             get { return fechacobro; }
-            set { fechacobro = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechacobro = value; }
         }
 
-        // Importe
         private decimal importe;
         public decimal Importe
         {
             get { return importe; }
-            set { importe = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                importe = value; }
+        }
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+        private string apellido;
+
+        public string Apellido
+        {
+            get { return apellido; }
+            set { apellido = value; }
         }
 
-        // Forma de pago
         private string formapago;
         public string Formapago
         {
@@ -63,31 +105,13 @@ namespace BE
             set { formapago = value; }
         }
 
-        // Datos adicionales según forma de pago
-        //private string numerocomprobante;
-        //public string Numerocomprobante
-        //{
-        //    get { return numerocomprobante; }
-        //    set { numerocomprobante = value; }
-        //}
-
-        //private string banco;
-        //public string Banco
-        //{
-        //    get { return banco; }
-        //    set { banco = value; }
-        //}
-
-        // Estado del cobro
         private string estado;
         public string Estado
         {
             get { return estado; }
             set { estado = value; }
         }
-        // Ej: Confirmado, Pendiente, Rechazado
 
-        // Observaciones
         private string observaciones;
         public string Observaciones
         {
@@ -95,13 +119,27 @@ namespace BE
             set { observaciones = value; }
         }
 
-        // Usuario
         private int idlogin;
 
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
+        private string combo;
+
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+
     }
 }

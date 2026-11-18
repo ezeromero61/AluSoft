@@ -8,6 +8,20 @@ namespace DAL
 {
     public class clsCifrado
     {
+        public static void DescifrarColumnas(System.Data.DataTable tabla, params string[] columnas)
+        {
+            foreach (string col in columnas)
+            {
+                if (!tabla.Columns.Contains(col)) continue;
+                tabla.Columns[col].ReadOnly = false;
+                foreach (System.Data.DataRow fila in tabla.Rows)
+                {
+                    if (fila[col] != System.DBNull.Value)
+                        fila[col] = DesencriptarString(fila[col].ToString());
+                }
+            }
+        }
+
         public static string EncriptarString(string plainText)
         {
             if (plainText is null)
@@ -65,7 +79,6 @@ namespace DAL
                     return new string(chars);
                 }
             }
-            //return EncriptarString(cipherText);   
         }
         public static int EncriptarInteger(int numero)
         {
@@ -103,8 +116,8 @@ namespace DAL
 
             for (int i = 0; i < chars.Length; i++)
             {
-                int Unidad = chars[i] - '0'; // Convierte char numérico a int
-                int encriptado = (Unidad + 3) % 10; // Suma 3 y aplica módulo 10
+                int Unidad = chars[i] - '0';
+                int encriptado = (Unidad + 3) % 10;
                 parcial += encriptado.ToString();
             }
 
@@ -145,8 +158,8 @@ namespace DAL
 
             for (int i = 0; i < chars.Length; i++)
             {
-                int Unidad = chars[i] - '0'; // Convierte char numérico a int
-                int desencriptado = (Unidad + 10 - 3) % 10; // Resta 3 usando módulo inverso
+                int Unidad = chars[i] - '0';
+                int desencriptado = (Unidad + 10 - 3) % 10;
                 parcial += desencriptado.ToString();
             }
 

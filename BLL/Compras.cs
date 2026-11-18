@@ -42,5 +42,16 @@ namespace BLL
                 List<BE.cls17_Compras> cliente = mapper.Listar();
                 return cliente;
             }
-        }  
+        public List<BE.cls17_Compras> ListarCatalogo2()
+        {
+            List<BE.cls17_Compras> stock = mapper.Listar2();
+            return stock;
+        }
+        public DataTable Consultar(BE.cls17_Compras stock, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.Consultar(stock, id);
+            return tabla;
+        }
+    }  
 }

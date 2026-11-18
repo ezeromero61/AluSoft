@@ -22,19 +22,5 @@ namespace DAL
                 return cantidadCaracteres;
             }        
         }
-        //public bool VerificadorDigitoVerificador(object parametro)
-        //{
-            //ConsultarBitacora(IdBitacora);
-            //int verificador2 = clsCifrado.DesencriptartInt(digitoverificador.ToString());
-            //int verificador1 = ContadorDigitoVerificador(IdBitacora);
-            //if (verificador1 == verificador2)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-        //}
     }
 }

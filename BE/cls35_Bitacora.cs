@@ -29,7 +29,27 @@ namespace BE
             get { return usuraio; }
             set { usuraio = value; }
         }
+        private int idrol;
 
+        public int IdRol
+        {
+            get { return idrol; }
+            set { idrol = value; }
+        }
+        private string nombrerol;
+
+        public string NombreRol
+        {
+            get { return nombrerol; }
+            set { nombrerol = value; }
+        }
+        private string usuario;
+
+        public string Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
+        }
 
         #region Atributos
         public int idbitacora;
@@ -44,37 +64,86 @@ namespace BE
         public int IdBitacora
         {
             get => idbitacora;
-            set { idbitacora = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idbitacora = value; }
         }
         public int IdLogin
         {
             get => idlogin;
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
         public int IdTabla
         {
             get => idtabla;
-            set { idtabla = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idtabla = value; }
         }
         public int IdAccion
         {
             get => idaccion;
-            set { idaccion = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idaccion = value; }
         }
         public DateTime Fecha
         {
             get => fecha;
-            set { fecha = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fecha = value; }
         }
         public DateTime Hora
         {
             get => hora;
-            set { hora = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); hora = value; }
         }
         public int DigitoVerificador
         {
             get => digitoverificador;
-            set { digitoverificador = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                digitoverificador = value; }
         }
         #endregion
     }

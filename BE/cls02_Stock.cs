@@ -13,28 +13,57 @@ namespace BE
 		public int Idstock
 		{
 			get { return idstock; }
-			set { idstock = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idstock = value; }
 		}
 		private int cantidad_minima;
 
 		public int Cantidad_minima
         {
 			get { return cantidad_minima; }
-			set { cantidad_minima = value; }
+			set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El valor no puede ser negativo.");
+                }
+                cantidad_minima = value; }
 		}
 		private int cantidad_maxima;
 
 		public int Cantidad_maxima
         {
 			get { return cantidad_maxima; }
-			set { cantidad_maxima = value; }
+			set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El valor no puede ser negativo.");
+                }
+                cantidad_maxima = value; }
 		}
 		private int cantidad_actual;
 
 		public int Cantidad_actual
 		{
 			get { return cantidad_actual; }
-			set { cantidad_actual = value; }
+			set
+            {
+                // El stock puede quedar en 0 (producto agotado); solo no puede ser negativo.
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El stock no puede ser negativo.");
+                }
+                cantidad_actual = value; }
 		}
 
 	}

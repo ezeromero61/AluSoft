@@ -15,7 +15,10 @@ namespace BLL
             }
             public static int Id_Login
             { get; set; }
-
+            public static int Id_Rol
+            {
+                get; set;
+            }
             public static int selector_en_informes
             { get; set; }
 
@@ -65,18 +68,6 @@ namespace BLL
                 }
                 return clsPerdurables.numerodeidioma;
             }
-            public static DateTime ConvertirFormatoFecha(string fechaString, string formatoEntrada, string formatoSalida)
-            {
-                // Convertir la cadena de fecha al formato deseado
-                try
-                {
-                    DateTime fecha = DateTime.ParseExact(fechaString, formatoEntrada, System.Globalization.CultureInfo.InvariantCulture);
-                    return fecha;
-                }
-                catch (FormatException)
-                {
-                    throw new FormatException("Formato de fecha incorrecto.");
-                }
-            }       
+       
     }
 }

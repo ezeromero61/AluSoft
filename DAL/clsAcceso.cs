@@ -12,13 +12,51 @@ namespace DAL
     {
         SqlConnection cn = new SqlConnection();
         SqlCommand cmd = new SqlCommand();
+        public const string BaseDeDatos = "AluSoft_entrega";
+        static readonly string[] cadenas = {
+            @"Data Source=localhost\SQLEXPRESS06;Initial Catalog=" + BaseDeDatos + ";Integrated Security=True;TrustServerCertificate=True;Connect Timeout=5;",
+            @"Data Source=.;Initial Catalog=" + BaseDeDatos + ";Integrated Security=True;TrustServerCertificate=True;Connect Timeout=5;",
+            @"Data Source=localhost\SQLEXPRESS;Initial Catalog=" + BaseDeDatos + ";Integrated Security=True;TrustServerCertificate=True;Connect Timeout=5;"
+        };
+        static string cadenaQueFunciona;
+
+        public static string CadenaConexion
+        {
+            get
+            {
+                if (cadenaQueFunciona != null) return cadenaQueFunciona;
+                foreach (string cadena in cadenas)
+                {
+                    try
+                    {
+                        using (SqlConnection prueba = new SqlConnection(cadena))
+                        {
+                            prueba.Open();
+                            cadenaQueFunciona = cadena;
+                            return cadena;
+                        }
+                    }
+                    catch (SqlException) { }
+                }
+                return cadenas[0];
+            }
+        }
 
         public void Conectar()
         {
-            cn.ConnectionString = @"Server=localhost\SQLEXPRESS;Database=AluSoft.bacpac;Integrated Security=true";
-            
-            //cn.ConnectionString = @"Data Source=.;Initial Catalog=Facultad;User ID=sa";
-            cn.Open();
+            try
+            {
+                if (cn.State != ConnectionState.Closed)
+                    cn.Close();
+                cn.ConnectionString = CadenaConexion;
+                cn.Open();
+            }
+            catch (SqlException ex)
+            {
+                cadenaQueFunciona = null;
+                throw new InvalidOperationException(
+                    "No se pudo conectar con la base " + BaseDeDatos + " en ninguna de las instancias configuradas.", ex);
+            }
         }
 
         public void Desconectar()
@@ -87,17 +125,6 @@ namespace DAL
             Desconectar();
             return dt;
         }
-        public SqlDataReader LeerConDataReaderSinParametro(string StoredProcedure)
-        {
-            Conectar();
-            SqlCommand comando = new SqlCommand();
-            comando.Connection = cn;
-            comando.CommandType = CommandType.StoredProcedure;
-            comando.CommandText = StoredProcedure;           
-            // cierra automáticamente la conexión cuando se cierre el DataReader
-            SqlDataReader reader = comando.ExecuteReader(CommandBehavior.CloseConnection);
-            return reader;
-        }
         public SqlDataReader LeerConDataReader(string StoredProcedure, SqlParameter[] parametros)
         {
             Conectar();
@@ -105,12 +132,10 @@ namespace DAL
             comando.Connection = cn;
             comando.CommandType = CommandType.StoredProcedure;
             comando.CommandText = StoredProcedure;
-            // Agregar parámetros si existen
             if (parametros != null)
             {
                 comando.Parameters.AddRange(parametros);               
             }
-            // cierra automáticamente la conexión cuando se cierre el DataReader
             SqlDataReader reader = comando.ExecuteReader(CommandBehavior.CloseConnection);
             return reader;
         }

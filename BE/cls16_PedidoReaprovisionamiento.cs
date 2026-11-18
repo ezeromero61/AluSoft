@@ -8,27 +8,39 @@ namespace BE
 {
     public class cls16_PedidoReaprovisionamiento
     {
-        // Identificación
         private int idpedidoreaprovisionamiento;
         public int Idpedidoreaprovisionamiento
         {
             get { return idpedidoreaprovisionamiento; }
-            set { idpedidoreaprovisionamiento = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idpedidoreaprovisionamiento = value; }
         }
 
-        //private string numeropedido;
-        //public string Numeropedido
-        //{
-        //    get { return numeropedido; }
-        //    set { numeropedido = value; }
-        //}
-
-        // Proveedor
         private int idproveedor;
         public int Idproveedor
         {
             get { return idproveedor; }
-            set { idproveedor = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idproveedor = value; }
+        }
+        private int idpresupuestoproveedor;
+
+        public int IdPresupuestoProveedor
+        {
+            get { return idpresupuestoproveedor; }
+            set { idpresupuestoproveedor = value; }
         }
 
         private string nombreproveedor;
@@ -38,46 +50,91 @@ namespace BE
             set { nombreproveedor = value; }
         }
 
-        //// Relación (opcional) con orden de producción
-        //private int? idordenproduccion;
-        //public int? Idordenproduccion
-        //{
-        //    get { return idordenproduccion; }
-        //    set { idordenproduccion = value; }
-        //}
-
-        // Fechas
         private DateTime fechapedido;
         public DateTime Fechapedido
         {
             get { return fechapedido; }
-            set { fechapedido = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechapedido = value; }
         }
 
-        private DateTime? fechaentregaestimada;
-        public DateTime? Fechaentregaestimada
+        private DateTime fechaentregaestimada;
+        public DateTime Fechaentregaestimada
         {
             get { return fechaentregaestimada; }
-            set { fechaentregaestimada = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaentregaestimada = value; }
         }
 
-        private DateTime? fechaentregareal;
-        public DateTime? Fechaentregareal
+        private DateTime fechaentregareal;
+        public DateTime Fechaentregareal
         {
             get { return fechaentregareal; }
-            set { fechaentregareal = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaentregareal = value; }
         }
 
-        // Estado del pedido
+        private int catidad;
+
+        public int Cantidad
+        {
+            get { return catidad; }
+            set { catidad = value; }
+        }
+        private int precio;
+
+        public int Precio
+        {
+            get { return precio; }
+            set { precio = value; }
+        }
+        private int iva;
+
+        public int IVA
+        {
+            get { return iva; }
+            set { iva = value; }
+        }
+        private int subtotal;
+
+        public int Subtotal
+        {
+            get { return subtotal; }
+            set { subtotal = value; }
+        }
+        private int total;
+
+        public int Total
+        {
+            get { return total; }
+            set { total = value; }
+        }
+
         private string estado;
         public string Estado
         {
             get { return estado; }
             set { estado = value; }
         }
-        // Ej: Pendiente, Enviado, Recibido, Cancelado
 
-        // Prioridad
         private string prioridad;
         public string Prioridad
         {
@@ -85,29 +142,6 @@ namespace BE
             set { prioridad = value; }
         }
 
-        //// Importes
-        //private decimal subtotal;
-        //public decimal Subtotal
-        //{
-        //    get { return subtotal; }
-        //    set { subtotal = value; }
-        //}
-
-        //private decimal impuestos;
-        //public decimal Impuestos
-        //{
-        //    get { return impuestos; }
-        //    set { impuestos = value; }
-        //}
-
-        //private decimal total;
-        //public decimal Total
-        //{
-        //    get { return total; }
-        //    set { total = value; }
-        //}
-
-        // Observaciones
         private string observaciones;
         public string Observaciones
         {
@@ -115,22 +149,37 @@ namespace BE
             set { observaciones = value; }
         }
 
-        // Usuario responsable
         private int idlogin;
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
         private int digitoverificador;
 
         public int DigitoVerificador
         {
             get { return digitoverificador; }
-            set { digitoverificador = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                digitoverificador = value; }
         }
         private string combo;
 
+        public string Producto { get; set; }
+        public int Idstock { get; set; }
         public string Combo
         {
             get { return combo; }

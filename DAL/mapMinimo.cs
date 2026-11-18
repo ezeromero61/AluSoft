@@ -50,9 +50,7 @@ namespace DAL
 
             foreach (DataRow dr in tabla.Rows)
             {
-                //BE.cls01_Inventario inventario = new BE.cls01_Inventario();
                 minimo.Idminimo = int.Parse(dr["IdMinimo"].ToString());
-                //ls=(inventario.Idinventario);
             }
 
             return ls = minimo.Idminimo
@@ -71,6 +69,40 @@ namespace DAL
                 minimo.Fecha = DateTime.Parse(dr["Fecha"].ToString());
                 minimo.Cantidad = int.Parse(dr["Cantidad"].ToString());
                 minimo.DigitoVerificador = int.Parse(dr["DigitoVerificador"].ToString());
+                ls.Add(minimo);
+            }
+            return ls;
+        }
+        public DataTable Consultar(BE.cls20_Minimo minimo, int id)
+        {
+            SqlParameter[] parametro = new SqlParameter[1];
+            parametro[0] = new SqlParameter("@IdMinimo", id);
+            DataTable tabla = acc.LeerConParametro("BusquedaConIdMinimoCombinadoStockInventario", parametro);
+            foreach (DataRow dr in tabla.Rows)
+            {
+                minimo.Idminimo = int.Parse(dr["IdMinimo"].ToString());
+                minimo.Idstock = int.Parse(dr["IdStock"].ToString());
+                minimo.Nombre = (dr["Nombre"].ToString());
+                minimo.Fecha = DateTime.Parse(dr["Fecha"].ToString());
+                minimo.Cantidad = int.Parse(dr["Cantidad"].ToString());
+                minimo.DigitoVerificador = int.Parse(dr["DigitoVerificador"].ToString());
+            }
+            return tabla;
+        }
+        public List<BE.cls20_Minimo> Listar2()
+        {
+            List<BE.cls20_Minimo> ls = new List<BE.cls20_Minimo>();
+            DataTable tabla = acc.Leer("Obtener_20_StockInventario", null);
+            foreach (DataRow dr in tabla.Rows)
+            {
+                BE.cls20_Minimo minimo = new BE.cls20_Minimo();
+                minimo.Idminimo = int.Parse(dr["IdMinimo"].ToString());
+                minimo.Idstock = int.Parse(dr["IdStock"].ToString());
+                minimo.Nombre = (dr["Nombre"].ToString());
+                minimo.Fecha = DateTime.Parse(dr["Fecha"].ToString());
+                minimo.Cantidad = int.Parse(dr["Cantidad"].ToString());
+                minimo.DigitoVerificador = int.Parse(dr["DigitoVerificador"].ToString());
+                minimo.Combo = "(ID: " + minimo.Idminimo + ") " + minimo.Nombre;
                 ls.Add(minimo);
             }
             return ls;

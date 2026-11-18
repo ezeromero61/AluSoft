@@ -54,9 +54,7 @@ namespace DAL
 
             foreach (DataRow dr in tabla.Rows)
             {
-                //BE.cls01_Inventario inventario = new BE.cls01_Inventario();
                 lista.Idlista = int.Parse(dr["IdLista"].ToString());
-                //ls=(inventario.Idinventario);
             }
 
             return ls = lista.Idlista;
@@ -88,7 +86,8 @@ namespace DAL
                 lista.Nombre = dr["Nombre"].ToString();
                 lista.Fecha = DateTime.Parse(dr["Fecha"].ToString());
                 lista.Precio = int.Parse(dr["Precio"].ToString());
-                lista.Combo = "(ID: " + lista.Idlista + ") " + lista.Nombre;
+                lista.Cantidad = int.Parse(dr["Cantidad"].ToString());
+                lista.Combo = "Nº" + lista.Idlista+"-"+lista.Nombre+"-$"+lista.Precio;
                 ls.Add(lista);
             }
             return ls;

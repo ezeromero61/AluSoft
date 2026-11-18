@@ -65,7 +65,6 @@ namespace BLL
                     return new string(chars);
                 }
             }
-            //return EncriptarString(cipherText);   
         }
         public static int EncriptarInteger(int numero)
         {
@@ -103,8 +102,8 @@ namespace BLL
 
             for (int i = 0; i < chars.Length; i++)
             {
-                int Unidad = chars[i] - '0'; // Convierte char numérico a int
-                int encriptado = (Unidad + 3) % 10; // Suma 3 y aplica módulo 10
+                int Unidad = chars[i] - '0';
+                int encriptado = (Unidad + 3) % 10;
                 parcial += encriptado.ToString();
             }
 
@@ -145,8 +144,8 @@ namespace BLL
 
             for (int i = 0; i < chars.Length; i++)
             {
-                int Unidad = chars[i] - '0'; // Convierte char numérico a int
-                int desencriptado = (Unidad + 10 - 3) % 10; // Resta 3 usando módulo inverso
+                int Unidad = chars[i] - '0';
+                int desencriptado = (Unidad + 10 - 3) % 10;
                 parcial += desencriptado.ToString();
             }
 

@@ -26,7 +26,6 @@ namespace DAL
 
             return fa;
         }
-
         public int Editar(BE.cls19_Maximo maximo)
         {
             int fa = 0;
@@ -42,7 +41,6 @@ namespace DAL
 
             return fa;
         }
-
         public int Eliminar(BE.cls19_Maximo maximo)
         {
             int fa = 0;
@@ -55,7 +53,6 @@ namespace DAL
 
             return fa;
         }
-
         public int MaxId(BE.cls19_Maximo maximo)
         {
             int ls = 0;
@@ -63,15 +60,12 @@ namespace DAL
 
             foreach (DataRow dr in tabla.Rows)
             {
-                //BE.cls01_Inventario inventario = new BE.cls01_Inventario();
                 maximo.Idmaximo = int.Parse(dr["IdMaximo"].ToString());
-                //ls=(inventario.Idinventario);
             }
 
             return ls = maximo.Idmaximo
                 ;
         }
-
         public List<BE.cls19_Maximo> Listar()
         {
             List<BE.cls19_Maximo> ls = new List<BE.cls19_Maximo>();
@@ -85,6 +79,41 @@ namespace DAL
                 maximo.Fecha = DateTime.Parse(dr["Fecha"].ToString());
                 maximo.Cantidad = int.Parse(dr["Cantidad"].ToString());
                 maximo.DigitoVerificador = int.Parse(dr["DigitoVerificador"].ToString());
+                ls.Add(maximo);
+            }
+            return ls;
+        }
+        public DataTable Consultar(BE.cls19_Maximo maximo, int id)
+        {
+            SqlParameter[] parametro = new SqlParameter[1];
+            parametro[0] = new SqlParameter("@IdMaximo", id);
+            DataTable tabla = acc.LeerConParametro("BusquedaConIdMaximoCombinadoStockInventario", parametro);
+            foreach (DataRow dr in tabla.Rows)
+            {
+                maximo.Idmaximo = int.Parse(dr["IdMaximo"].ToString());
+                maximo.Idstock = int.Parse(dr["IdStock"].ToString());
+                maximo.Nombre = (dr["Nombre"].ToString());
+                if (dr["Fecha"] != DBNull.Value)
+                    maximo.Fecha = Convert.ToDateTime(dr["Fecha"]);
+                maximo.Cantidad = int.Parse(dr["Cantidad"].ToString());
+                maximo.DigitoVerificador = int.Parse(dr["DigitoVerificador"].ToString());
+            }
+            return tabla;
+        }
+        public List<BE.cls19_Maximo> Listar2()
+        {
+            List<BE.cls19_Maximo> ls = new List<BE.cls19_Maximo>();
+            DataTable tabla = acc.Leer("Obtener_19_StockInventario", null);
+            foreach (DataRow dr in tabla.Rows)
+            {
+                BE.cls19_Maximo maximo = new BE.cls19_Maximo();
+                maximo.Idmaximo = int.Parse(dr["IdMaximo"].ToString());
+                maximo.Idstock = int.Parse(dr["IdStock"].ToString());
+                maximo.Nombre = (dr["Nombre"].ToString());
+                maximo.Fecha = DateTime.Parse(dr["Fecha"].ToString());
+                maximo.Cantidad = int.Parse(dr["Cantidad"].ToString());
+                maximo.DigitoVerificador = int.Parse(dr["DigitoVerificador"].ToString());
+                maximo.Combo = "(ID: " + maximo.Idmaximo + ") " + maximo.Nombre;
                 ls.Add(maximo);
             }
             return ls;

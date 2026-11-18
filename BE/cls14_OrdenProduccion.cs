@@ -8,33 +8,58 @@ namespace BE
 {
     public class cls14_OrdenProduccion
     {
-        // Identificación
         private int idordenproduccion;
         public int Idordenproduccion
         {
             get { return idordenproduccion; }
-            set { idordenproduccion = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idordenproduccion = value; }
         }      
-        // Fechas
         private DateTime fechaorden;
         public DateTime Fechaorden
         {
             get { return fechaorden; }
-            set { fechaorden = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaorden = value; }
         }
         private int idstock;
 
         public int Idstock
         {
             get { return idstock; }
-            set { idstock = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idstock = value; }
         }
         private int cantidad;
 
         public int Cantidad
         {
             get { return cantidad; }
-            set { cantidad = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                cantidad = value; }
         }
 
         private string observaciones;
@@ -47,7 +72,31 @@ namespace BE
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
+        public int IdPedido { get; set; }
+
+        private string combo;
+
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
     }
 }

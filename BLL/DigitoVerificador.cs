@@ -16,5 +16,13 @@ namespace BLL
             fa = mapper.CrearDigitoVerificador(parametro);
             return fa;
         }
+
+        public static int CalcularLogin(string usuario, string contraseña, int idRol)
+        {
+            int suma = idRol;
+            foreach (char c in ((usuario ?? "").Trim() + (contraseña ?? "").Trim()))
+                suma += (int)c;
+            return suma;
+        }
     }
 }

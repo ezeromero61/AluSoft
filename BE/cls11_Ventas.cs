@@ -8,12 +8,18 @@ namespace BE
 {
     public class cls11_Ventas
     {
-        // Identificación
         private int idventa;
         public int Idventa
         {
             get { return idventa; }
-            set { idventa = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idventa = value; }
         }
 
         private string numeroventa;
@@ -23,102 +29,177 @@ namespace BE
             set { numeroventa = value; }
         }
 
-        // Relaciones
         private int idpedido;
         public int Idpedido
         {
             get { return idpedido; }
-            set { idpedido = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idpedido = value; }
         }
 
         private int idfactura;
         public int Fdfactura
         {
             get { return idfactura; }
-            set { idfactura = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idfactura = value; }
         }
 
         private int idcliente;
         public int Idcliente
         {
             get { return idcliente; }
-            set { idcliente = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcliente = value; }
         }
         private int idcobro;
         public int Idcobro
         {
             get { return idcobro; }
-            set { idcobro = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcobro = value; }
         }
-        // Fechas clave
         private DateTime fechaventa;
         public DateTime Fechaventa
         {
             get { return fechaventa; }
-            set { fechaventa = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaventa = value; }
         }
 
-        private DateTime? fechaentrega;
-        public DateTime? Fechaentrega
+        private DateTime fechaentrega;
+        public DateTime Fechaentrega
         {
             get { return fechaentrega; }
-            set { fechaentrega = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaentrega = value; }
         }
 
-        // Importes
         private decimal subtotal;
         public decimal Subtotal
         {
             get { return subtotal; }
-            set { subtotal = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                subtotal = value; }
         }
 
         private decimal descuento;
         public decimal Descuento
         {
             get { return descuento; }
-            set { descuento = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El valor no puede ser negativo.");
+                }
+                descuento = value; }
         }
 
         private decimal impuestos;
         public decimal Impuestos
         {
             get { return impuestos; }
-            set { impuestos = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El valor no puede ser negativo.");
+                }
+                impuestos = value; }
         }
 
         private decimal total;
         public decimal Total
         {
             get { return total; }
-            set { total = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                total = value; }
         }
 
-        // Pagos (clave para reportes)
         private decimal totalcobrado;
         public decimal Totalcobrado
         {
             get { return totalcobrado; }
-            set { totalcobrado = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El valor no puede ser negativo.");
+                }
+                totalcobrado = value; }
         }
 
         private decimal saldopendiente;
         public decimal Saldopendiente
         {
             get { return saldopendiente; }
-            set { saldopendiente = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El valor no puede ser negativo.");
+                }
+                saldopendiente = value; }
         }
 
-        // Estado de la venta
         private string estado;
         public string Estado
         {
             get { return estado; }
             set { estado = value; }
         }
-        // Ej: Pendiente, EnProceso, Finalizada, Cancelada
        
-        // Observaciones
         private string observaciones;
         public string Observaciones
         {
@@ -126,13 +207,19 @@ namespace BE
             set { observaciones = value; }
         }
 
-        // Usuario / vendedor
         private int idlogin;
 
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
         }
     }
 }

@@ -8,55 +8,89 @@ namespace BE
 {
     public class cls15_Estado
     {
-        // Identificación
         private int idestado;
 
         public int Idestado
         {
             get { return idestado; }
-            set { idestado = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idestado = value; }
         }
         private int idordenproduccion;
 
         public int Idordenproduccion
         {
             get { return idordenproduccion; }
-            set { idordenproduccion = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idordenproduccion = value; }
         }
-        // Fechas
         private DateTime fechaorden;
 
         public DateTime Fechaorden
         {
             get { return fechaorden; }
-            set { fechaorden = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaorden = value; }
         }
 
-        private DateTime? fechainicioproduccion;
+        private DateTime fechainicioproduccion;
 
-        public DateTime? Fechainicioproduccion
+        public DateTime Fechainicioproduccion
         {
             get { return fechainicioproduccion; }
-            set { fechainicioproduccion = value; }
+            set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechainicioproduccion = value; }
         }
 
-        private DateTime? fechafinproduccion;
+        private DateTime fechafinproduccion;
 
-        public DateTime? Fechafinproduccion
+        public DateTime Fechafinproduccion
         {
             get { return fechafinproduccion; }
-            set { fechafinproduccion = value; }
+            set {
+                // Vacía (MinValue) = todavía sin fecha: se guarda NULL.
+                if (value == DateTime.MinValue) { fechafinproduccion = value; return; }
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechafinproduccion = value; }
         }
 
-        private DateTime? fechaentrega;
+        private DateTime fechaentrega;
 
-        public DateTime? Fechaentrega
+        public DateTime Fechaentrega
         {
             get { return fechaentrega; }
-            set { fechaentrega = value; }
+            set
+            {
+                // Vacía (MinValue) = todavía sin fecha: se guarda NULL.
+                if (value == DateTime.MinValue) { fechaentrega = value; return; }
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechaentrega = value; }
         }
 
-        // Estado de producción
         private string estado;
 
         public string Estado
@@ -64,19 +98,7 @@ namespace BE
             get { return estado; }
             set { estado = value; }
         }
-        // Ej: Pendiente, EnProduccion, Pausado, Terminado, Entregado
 
-        // Prioridad
-        //private string prioridad;
-
-        //public string Prioridad
-        //{
-        //    get { return prioridad; }
-        //    set { prioridad = value; }
-        //}
-        // Normal, Urgente
-
-        // Detalles técnicos generales
         private string observaciones;
 
         public string Observaciones
@@ -85,39 +107,34 @@ namespace BE
             set { observaciones = value; }
         }
 
-        // Dirección de obra
-        //private string direccionobra;
-
-        //public string Direccionobra
-        //{
-        //    get { return direccionobra; }
-        //    set { direccionobra = value; }
-        //}
-
-        // Responsable
         private int idlogin;
 
         public int Idlogin
         {
             get { return idlogin; }
-            set { idlogin = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idlogin = value; }
+        }
+        private string combo;
+
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
         }
 
-        // Indicadores de proceso
-        //private bool listoparainstalar;
-
-        //public bool Listoparainstalar
-        //{
-        //    get { return listoparainstalar; }
-        //    set { listoparainstalar = value; }
-        //}
-
-        //private bool entregado;
-
-        //public bool Entregado
-        //{
-        //    get { return entregado; }
-        //    set { entregado = value; }
-        //}
     }
 }

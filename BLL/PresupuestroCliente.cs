@@ -12,6 +12,11 @@ namespace BLL
     public class PresupuestroCliente
     {
         mapPresupuestoCliente mapper = new mapPresupuestoCliente();
+        public int ActualizarEstado(int idPresupuesto, string estado)
+        {
+            return mapper.ActualizarEstado(idPresupuesto, estado);
+        }
+
         public int Agregar(BE.cls07_PresupuestoCliente presupuesto)
         {
             int fa;

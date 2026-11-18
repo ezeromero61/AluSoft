@@ -41,9 +41,19 @@ namespace BLL
             List<BE.cls03_Cliente> cliente = mapper.Listar();
             return cliente;
         }
-        public List<string> ListarIdNombreApellido()
+        public List<BE.cls03_Cliente> Listar2()
         {
-            List<string> cliente = mapper.ListarIdNombreApellido();
+            List<BE.cls03_Cliente> cliente = mapper.Listar2();
+            return cliente;
+        }
+        public List<BE.cls03_Cliente> Listar3(BE.cls03_Cliente stock, int id)
+        {
+            List<BE.cls03_Cliente> cliente = mapper.Listar3(stock, id);
+            return cliente;
+        }
+        public List<cls03_Cliente> ListarIdClienteNombreApellido()
+        {
+            List<cls03_Cliente> cliente = mapper.ListarIdClienteNombreApellido();
             return cliente;
         }
         public List<cls00_Persona> ListarIdPersonaNombreApellido()
@@ -56,6 +66,11 @@ namespace BLL
             DataTable tabla = new DataTable();
             tabla = mapper.ConsultarIdUsuario(stock, id);
             return tabla;
+        }
+        // [NUEVO] Búsqueda por IdCliente (para Factura y Venta).
+        public DataTable ConsultarPorIdCliente(BE.cls03_Cliente cliente, int idCliente)
+        {
+            return mapper.ConsultarPorIdCliente(cliente, idCliente);
         }
         public DataTable ConsultarIdPersonaIdCliente(BE.cls03_Cliente stock, int id)
         {

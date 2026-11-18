@@ -7,29 +7,36 @@ using System.Threading.Tasks;
 namespace BE
 {
     public class cls00_Persona
-    {
-		private string combo;
-
-		public string Combo
-		{
-			get { return combo; }
-			set { combo = value; }
-		}
-
+    {		
 		private int idpersona;
 
 		public int Idpersona
 		{
 			get { return idpersona; }
-			set { idpersona = value; }
-		}
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+
+                idpersona = value;
+            }
+        }
 
 		private int idlogin;
 
 		public int Idlogin
         {
 			get { return idlogin; }
-			set { idlogin = value; }
+			set {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El identificador de acceso no puede ser negativo.");
+                }
+                idlogin = value; }
 		}
 		private string nombre;
 
@@ -50,7 +57,13 @@ namespace BE
 		public DateTime Fecha_nacimiento
 		{
 			get { return fecha_nacimiento; }
-			set { fecha_nacimiento = value; }
+			set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fecha_nacimiento = value; }
 		}
 
 		private string genero;
@@ -74,19 +87,33 @@ namespace BE
 			get { return correo; }
 			set { correo = value; }
 		}
-		private int telefono;
+		private double telefono;
 
-		public int Telefono
+		public double Telefono
 		{
 			get { return telefono; }
-			set { telefono = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                telefono = value; }
 		}
-		private int dni;
+		private double dni;
 
-		public int Dni
+		public double Dni
 		{
 			get { return dni; }
-			set { dni = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                dni = value; }
 		}
 		private string localidad;
 
@@ -100,36 +127,75 @@ namespace BE
 		public int Idrol
 		{
 			get { return idrol; }
-			set { idrol = value; }
+			set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El identificador de rol no puede ser negativo.");
+                }
+                idrol = value; }
 		}
 		private DateTime fecha_alta;
 
 		public DateTime Fecha_alta
         {
 			get { return fecha_alta; }
-			set { fecha_alta = value; }
-		}
-		private DateTime fecha_baja;
+			set {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
 
-		public DateTime Fecha_baja
-		{
-			get { return fecha_baja; }
-			set { fecha_baja = value; }
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fecha_alta = value; }
 		}
-		private double cuil;
+        private DateTime? fecha_baja;
+
+        public DateTime? Fecha_baja
+        {
+            get { return fecha_baja; }
+            set
+            {
+                if (value.HasValue && value.Value < new DateTime(1753, 1, 1))
+                    throw new ArgumentException("La fecha ingresada no es válida.");
+
+                fecha_baja = value;
+            }
+        }
+        private double cuil;
 
 		public double Cuil
 		{
 			get { return cuil; }
-			set { cuil = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                cuil = value; }
 		}
 		private int digitoverificador;
 
 		public int DigitoVerificador
 		{
 			get { return digitoverificador; }
-			set { digitoverificador = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                digitoverificador = value; }
 		}
+        private string combo;
 
-	}
+        public string Combo
+        {
+            get { return combo; }
+            set { combo = value; }
+        }
+    }
 }

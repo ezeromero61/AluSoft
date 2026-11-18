@@ -8,16 +8,20 @@ namespace BE
 {
     public class cls26_Combinado
     {
-        // =========================
-        // DATOS DEL PRESUPUESTO
-        // =========================
 
         private int idpresupuesto;
 
         public int Idpresupuesto
         {
             get { return idpresupuesto; }
-            set { idpresupuesto = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idpresupuesto = value; }
         }
 
         private int idcliente;
@@ -25,7 +29,14 @@ namespace BE
         public int Idcliente
         {
             get { return idcliente; }
-            set { idcliente = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El Inúmero debe ser mayor a 0.");
+                }
+                idcliente = value; }
         }
         private string nombre;
 
@@ -47,8 +58,23 @@ namespace BE
         public int IdCatalogo
         {
             get { return idcataqlogo; }
-            set { idcataqlogo = value; }
+            set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcataqlogo = value; }
         }
+        private int cantidad;
+
+        public int Cantidad
+        {
+            get { return cantidad; }
+            set { cantidad = value; }
+        }
+
         private string producto;
 
         public string Producto
@@ -61,16 +87,29 @@ namespace BE
         public DateTime FechaCreacion
         {
             get { return fechacreacion; }
-            set { fechacreacion = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechacreacion = value; }
         }
         private DateTime fechavalidez;
 
         public DateTime FechaValidez
         {
             get { return fechavalidez; }
-            set { fechavalidez = value; }
+            set
+            {
+                if (value == DateTime.MinValue)
+                    throw new ArgumentException("La fecha es obligatoria.");
+
+                if (value.Year < 1753)
+                    throw new ArgumentException(
+                        "La fecha ingresada no es válida."); fechavalidez = value; }
         }
-        // Estado del presupuesto
         private string estado;
 
         public string Estado
@@ -92,36 +131,62 @@ namespace BE
             get { return observaciones; }
             set { observaciones = value; }
         }
-        // Totales
         private int subtotal;
 
         public int Subtotal
         {
             get { return subtotal; }
-            set { subtotal = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                subtotal = value; }
         }
         private int descuento;
 
         public int Descuento
         {
             get { return descuento; }
-            set { descuento = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                descuento = value; }
         }
         private int impuestos;
 
         public int Impuestos
         {
             get { return impuestos; }
-            set { impuestos = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                impuestos = value; }
         }
         private int total;
 
         public int Total
         {
             get { return total; }
-            set { total = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                total = value; }
         }
-        // Condiciones comerciales
         private string formapago;
 
         public string FormaPago
@@ -134,22 +199,29 @@ namespace BE
         public int PlazoEntregaDias
         {
             get { return plazoentregaDias; }
-            set { plazoentregaDias = value; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                plazoentregaDias = value; }
         }
-        // Usuario que lo creó
-        private int idlogin;
-
-        public int Idlogin
-        {
-            get { return idlogin; }
-            set { idlogin = value; }
-        }
+      
         private string combo;
 
         public string Combo
         {
             get { return combo; }
             set { combo = value; }
+        }
+        private int precio;
+
+        public int Precio
+        {
+            get { return precio; }
+            set { precio = value; }
         }
 
     }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BE;
+using DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BE;
-using DAL;
 
 namespace BLL
 {
@@ -39,6 +40,17 @@ namespace BLL
         {
             List<BE.cls19_Maximo> maximo = mapper.Listar();
             return maximo;
+        }
+        public List<BE.cls19_Maximo> ListarCatalogo2()
+        {
+            List<BE.cls19_Maximo> stock = mapper.Listar2();
+            return stock;
+        }
+        public DataTable Consultar(BE.cls19_Maximo stock, int id)
+        {
+            DataTable tabla = new DataTable();
+            tabla = mapper.Consultar(stock, id);
+            return tabla;
         }
     }
 }

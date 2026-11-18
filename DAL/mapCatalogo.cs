@@ -42,7 +42,7 @@ namespace DAL
             int fa = 0;
             SqlParameter[] parametro = new SqlParameter[1];
             parametro[0] = new SqlParameter("@IdCatalogo", catalogo.Idcatalogo);
-            fa = acc.Escribir("EliminarAlumno", parametro);
+            fa = acc.Escribir("EliminarCatalogo", parametro);
             return fa;
         }
         public int MaxId(BE.cls12_Catalogo catalogo)
@@ -93,7 +93,7 @@ namespace DAL
                 catalogo.Preciounitario = int.Parse(dr["PrecioUnitario"].ToString());
                 catalogo.Disponibilidad = (dr["Disponibilidad"].ToString());
                 catalogo.Cantidad = int.Parse(dr["Cantidad"].ToString());
-                catalogo.Combo = "(ID: " + catalogo.Idcatalogo + ") " + catalogo.Nombre;
+                catalogo.Combo = "Nº-" + catalogo.Idcatalogo + "-" + catalogo.Nombre;
                 ls.Add(catalogo);
             }
             return ls;
@@ -107,11 +107,11 @@ namespace DAL
             {
                 catalogo.Idcatalogo = int.Parse(dr["IdCatalogo"].ToString());
                 catalogo.Idinventario = int.Parse(dr["IdInventario"].ToString());
-                //catalogo.Nombre = (dr["Nombre"].ToString());
+                catalogo.Nombre = (dr["Nombre"].ToString());
                 catalogo.Preciounitario = int.Parse(dr["PrecioUnitario"].ToString());
                 catalogo.Disponibilidad = (dr["Disponibilidad"].ToString());
                 catalogo.Cantidad = int.Parse(dr["Cantidad"].ToString());
-                //catalogo.Combo = "(ID: " + catalogo.Idcatalogo + ") " + catalogo.Nombre;
+                catalogo.Combo = "(ID: " + catalogo.Idcatalogo + ") " + catalogo.Nombre;
             }
             return tabla;
         }

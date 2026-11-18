@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,15 +13,18 @@ namespace BE
 		public int Idcliente
 		{
 			get { return idcliente; }
-			set { idcliente = value; }
+			set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException(
+                        "El número debe ser mayor a 0.");
+                }
+                idcliente = value; }
 		}
-		private string combo;
-
-		public string Combo
-		{
-			get { return combo; }
-			set { combo = value; }
-		}
-
-	}
+        //public string NombreCompleto
+        //{
+        //    get { return (Nombre + " " + Apellido).Trim(); }
+        //}
+    }
 }

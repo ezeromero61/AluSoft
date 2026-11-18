@@ -18,6 +18,26 @@ namespace BLL
             fa = mapper.Agregar(stock);
             return fa;
         }
+        public int IngresarStockRemito(int idRemito, int idPresupuesto, int idStock, int cantidad)
+        {
+            return mapper.IngresarStockRemito(idRemito, idPresupuesto, idStock, cantidad);
+        }
+        public System.Data.DataTable ListarIngresosRemito()
+        {
+            return mapper.ListarIngresosRemito();
+        }
+        public int SumarStock(int idStock, int cantidad)
+        {
+            return mapper.SumarStock(idStock, cantidad);
+        }
+        public int DescontarStockPedido(int idOrden, int idStock, int cantidad)
+        {
+            return mapper.DescontarStockPedido(idOrden, idStock, cantidad);
+        }
+        public int DevolverStockPedido(int idPedido)
+        {
+            return mapper.DevolverStockPedido(idPedido);
+        }
         public int Editar(BE.cls02_Stock stock)
         {
             int fa;
